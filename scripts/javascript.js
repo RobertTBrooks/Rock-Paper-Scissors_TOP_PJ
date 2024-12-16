@@ -23,7 +23,6 @@ function getComputerChoice() {
         2: 'paper',
         3: 'scissors'
     }
-    console.log("computer picked " + options[choice])
     return options[choice];
 }
 
@@ -90,8 +89,8 @@ function getHumanChoice() {
 
 */
 function playRound() {
-    computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
     givePoint = true;
 
     const gameRules = {
