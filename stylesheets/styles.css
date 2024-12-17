@@ -1,5 +1,13 @@
-/*use this class to have evrything centered and in column form */
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    border-radius: 25px;
+}
+html {
+    background-color: #f8f8f8;
+}
 
+/*use this class to have evrything centered and in column form */
 .flex-box-column {
     display: flex;
     justify-content: center;
@@ -30,13 +38,29 @@
 }
 
 #start-game-button {
-    background-color: aqua;
+    color: #F5F5F5;
     border-radius: 10px;
+    border-color: #3C3C3C;
+    background-color: #FF5A5F;
+    
 }
+#start-game-button:hover {
+    background-color: #F5F5F5;
+    color: #3C3C3C;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 #container {
     border: solid black 2px;
-    
-    
+    background-color: #087E8B;
+    max-width: 1000px;
+    width: 1000px;
 }
 
 
@@ -47,6 +71,8 @@
     min-width: 400px;
     height: 600px;
     margin-bottom: 100px;
+    background-color: #F5F5F5;
+    
 }
 
 #outer-game-box {
@@ -61,48 +87,78 @@
     overflow: hidden;
     box-sizing: border-box;
     padding: 10px;
+    background-color: #3C3C3C;
+    border-radius: 0;
 }
 
 #computer-box {
     width:250px;
     height:80%;
-    border: solid red 2px;
+    border: solid #3C3C3C 2px;
     overflow: hidden;
     box-sizing: border-box;
-
+    background-color: #F5F5F5;
+    
 }
 
 #player-box {
     width:250px;
     height:80%;
-    border: solid blue 2px;
+    border: solid #3C3C3C 2px;
     border-bottom: 0;
+    background-color: #F5F5F5;
 }
 #player-choice-box {
-    border: solid blue 2px;
+    border: solid #3C3C3C 2px;
     height: 100%;
     width: 100%;
     align-content: center;
     text-align: center;
+    background-color: #F5F5F5;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 #score-player, #score-computer {
     margin-left: 5px;
+    
 }
 
 #computer-choice-box {
-    border: solid red 2px;
+    border: solid #3C3C3C 2px;
     border-bottom: 0;
     align-content: center;
     text-align: center;
     height: 100%;
     width: 100%;
+    background-color: #F5F5F5;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 
 .button-box {
-    gap: 15px;
+    gap: 25px;
     margin: 10px;
     padding: 10px;
     margin-top: 0;
+}
+
+.rps-button {
+    background-color: aqua;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    border-color: #3C3C3C;
+    color: #F5F5F5;
+    color: #F5F5F5;
+    background-color: #FF5A5F;
+}
+.rps-button:hover {
+    background-color: #F5F5F5;
+    color: #3C3C3C;
 }
 
 .popup {
@@ -121,19 +177,18 @@
 .popup-content {
     background-color: #fefefe;
     margin: 15% auto;
-    border: 1px solid #888;
-    border-radius: 10px;
+    border: 2px solid #3C3C3C;
     width: 80%;
     max-width: 500px;
+    overflow: hidden;
 }
 
 .close {
-    background-color: red;
+    background-color: #FF5A5F;
     border: solid #ffffff 1px;
-    border-radius: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    color: #aaa;
+    color: #F5F5F5;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -142,7 +197,7 @@
 
 .close:hover,
 .close:focus {
-    background-color: rgb(230, 96, 96);
+    background-color: rgb(250, 69, 69);
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -154,10 +209,10 @@
 }
 
 .x-button {
-    border: solid blue 2px;
-    background-color: blue;
+    border: solid #087E8B 5px;
+    background-color: #087E8B;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     display: flex;
