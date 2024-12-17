@@ -1,0 +1,165 @@
+/*use this class to have evrything centered and in column form */
+
+.flex-box-column {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/*use this class to have evrything centered and in row form */
+
+.flex-box-row {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#header-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+#start-game-button {
+    background-color: aqua;
+    border-radius: 10px;
+}
+#container {
+    border: solid black 2px;
+    
+}
+
+
+#game-play-here {
+    border: solid black 2px;
+    width: 700px;
+    height: 600px;
+    margin-bottom: 100px;
+}
+
+#outer-game-box {
+    border: solid black 2px;
+    border-bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width:100%;
+    height: 100%
+}
+
+#computer-box {
+    width:250px;
+    height:80%;
+    border: solid red 2px;
+
+
+}
+
+#player-box {
+    width:250px;
+    height:80%;
+    border: solid blue 2px;
+    border-bottom: 0;
+}
+#player-choice-box {
+    border: solid blue 2px;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+}
+#score-player, #score-computer {
+    margin-left: 5px;
+}
+
+#computer-choice-box {
+    border: solid red 2px;
+    border-bottom: 0;
+    align-content: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.button-box {
+    gap: 15px;
+    margin: 10px;
+    padding: 10px;
+    margin-top: 0;
+}
+
+.popup {
+    text-align: center;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    background-color: red;
+    border: solid #ffffff 1px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    background-color: rgb(230, 96, 96);
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#popup-message {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.x-button {
+    border: solid blue 2px;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.x-button-txt {
+    color: #fefefe;
+    font-size: 18px;
+    margin: 0;
+}

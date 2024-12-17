@@ -2,52 +2,27 @@
 let humanScore = 0;
 let computerScore = 0;
 let gameTerminated = false;
+let playerSelection = '';
+
+const computerScoreTxt = document.querySelector('#score-computer');
+const computerChoice = document.querySelector('#computer-choice');
+const playerChoice = document.querySelector('#player-choice');
+const playerScoreTxt = document.querySelector('#score-player');
+
+const headerLogText = document.querySelector('#log-text');
+
+
 
 // buttons is a node list. It looks and acts much like an array.
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".rps-button");
 
-// we use the .forEach method to iterate through each button
-buttons.forEach((button) => {
-  // and for each one we add a 'click' listener
-  button.addEventListener("click", () => {
-    alert(button.id);
-  });
-});
 
-const button = document.querySelector('#btn');
+
+const button = document.querySelector('#start-game-button');
 button.addEventListener('click', () => {
-    runMe()
+    resetGame();
+    playGame();
 });
-function runMe() {
-
-    const container = document.querySelector('#container');
-    const paragraph = document.createElement('p');
-    const header3 = document.createElement('h3');
-    const blkDiv = document.createElement('div');
-    const header1 = document.createElement('h1');
-    const paragraph2 = document.createElement('p')
-    
-    blkDiv.style.border = 'solid 1px black';
-    blkDiv.style.backgroundColor = 'pink';
-    blkDiv.className = 'black-div';
-    
-    header1.textContent = "Lets play! choose 1 option: rock, paper, scissors";
-    
-    header3.textContent = "I'm a blue h3!";
-    header3.style.color = 'blue';
-    
-    paragraph.textContent = "Hey I'm red!";
-    paragraph.style.color = 'red';
-    
-    paragraph2.textContent = "ME TOO!"
-    
-    container.appendChild(header3);
-    container.appendChild(paragraph);
-    container.appendChild(blkDiv);
-    const blackDiv = document.querySelector('.black-div');
-    blackDiv.appendChild(header1);
-    blackDiv.appendChild(paragraph2)
-}
 
 
 function getComputerChoice() {
@@ -56,49 +31,59 @@ function getComputerChoice() {
         1: 'rock',
         2: 'paper',
         3: 'scissors'
-    }
+    };
     return options[choice];
 }
 
-function getHumanChoice(choice) {
-    const gameRules = ['rock', 'paper', 'scissors'];
-    let choiceMade = false;
-    let loop = 0;
+function getHumanChoice() {
 
-    while (!choiceMade || loop > 100) {
-        try {
-            // let choice = prompt("to exit type exit: \nLets play! choose 1 option: rock, paper, scissors: ").toLowerCase();
+    // const gameRules = ['rock', 'paper', 'scissors'];
+    // let choiceMade = false;
+    // let loop = 0;
+
+    return new Promise((resolve) => {
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                playerSelection = button.value;
+                resolve(playerSelection);
+            }, { once: true });
+        });
+    });
+
+    // while (!choiceMade || loop > 100) {
+    //     try {
+    //         // let choice = prompt("to exit type exit: \nLets play! choose 1 option: rock, paper, scissors: ").toLowerCase();
     
-            if (choice === 'exit') {
-                gameTerminated = true;
-            }
-            else if (!gameRules.includes(choice)) {
-                throw new Error("invalid option. Pick rock, paper, or scissors")
+    //         if (choice === 'exit') {
+    //             gameTerminated = true;
+    //         }
+    //         else if (!gameRules.includes(choice)) {
+    //             throw new Error("invalid option. Pick rock, paper, or scissors")
             
-            }
-            else {
-                console.log("play picked: " + choice);
-                return choice;
-            }
-            choiceMade = true
-            // this is here to protect from random endless loop as a backup.
-            loop++;
+    //         }
+    //         else {
+    //             console.log("play picked: " + choice);
+    //             return choice;
+    //         }
+    //         choiceMade = true
+    //         // this is here to protect from random endless loop as a backup.
+    //         loop++;
             
-        } catch (error) {
-            console.error("An error has been thrown. : ", error)
-        }
+    //     } catch (error) {
+    //         console.error("An error has been thrown. : ", error)
+    //     }
 
-    }
-    if (loop >= 100) {
-        console.log("Mad lad you either messged up 100 times.. or you hit a loop")
-        gameTerminated = true;
-    }
+    // }
+    // if (loop >= 100) {
+    //     console.log("Mad lad you either messged up 100 times.. or you hit a loop")
+    //     gameTerminated = true;
+    // }
     
 }
 
-function playRound() {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+async function playRound() {
+    human = await getHumanChoice();
+    computer = getComputerChoice();
     givePoint = true;
 
     const gameRules = {
@@ -107,17 +92,23 @@ function playRound() {
         'scissors': 'paper'
     };
 
-    if (gameRules[humanChoice] === computerChoice) {
+    if (gameRules[human] === computer) {
         humanScore++;
-        console.log("Player wins!: " + humanChoice + " beats: " + computerChoice);
+        headerLogText.textContent = "Player wins!: " + human + " beats: " + computer;
+        playerChoice.textContent = human;
+        computerChoice.textContent = computer;
         return givePoint;
     }
-    else if (humanChoice === computerChoice) {
-        console.log("Draw");
+    else if (human === computer) {
+        headerLogText.textContent = "Draw";
+        playerChoice.textContent = human;
+        computerChoice.textContent = computer;
     }
     else {
         computerScore++;
-        console.log("Computer wins!: " + computerChoice + " beats: " + humanChoice);
+        headerLogText.textContent ="Computer wins!: " + computer + " beats: " + human;
+        computerChoice.textContent = computer;
+        playerChoice.textContent = human;
         return givePoint;
     }
 
@@ -125,30 +116,73 @@ function playRound() {
 
 
 // playGame is main game loop.
-function playGame() {
-    let gameOn = 0
-    let winner = ''
+async function playGame() {
+    let gameOn = 0;
+    let winner = '';
+    playerScoreTxt.textContent = humanScore;
+    computerScoreTxt.textContent = computerScore;
     
     while (!gameTerminated) {
-        if (playRound()) {
+        if (await playRound()) {
             gameOn++
             if (gameOn > 4) {
                 gameTerminated = true;
             }
         }
+        computerScoreTxt.textContent = computerScore;
+        playerScoreTxt.textContent = humanScore;
     }
 
     if (humanScore > computerScore) {
-        winner = "Player wins!: "+ humanScore
+        winner = "Player wins!: "+ humanScore + "/ " + gameOn;
         gameOn++;
     }
     else if (computerScore > humanScore) {
-        winner = "Computer wins!: "+ computerScore
+        winner = "Computer wins!: "+ computerScore + "/ " + gameOn;
         gameOn++;
     }
     else {
-        winner = "Draw!! Player score: " + humanScore + "Computer score: " + computerScore
+        winner = "Draw!! Player score: " + humanScore + "Computer score: " + computerScore;
     }
-    console.log(winner)
+    showPopup(winner);
 
 }
+
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    gameTerminated = false;
+    playerSelection = '';
+    headerLogText.textContent = "Lets Play rock paper scissors!!";
+    computerChoice.textContent = "choice";
+    playerChoice.textContent = "choice";
+}
+
+
+// Function to show the popup
+function showPopup(message) {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popup-message");
+    popupMessage.textContent = message;
+    popup.style.display = "block";
+}
+
+// Function to hide the popup
+function hidePopup() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+
+// Close the popup when clicking on <span> (x)
+document.querySelector(".close").onclick = hidePopup;
+
+// Close the popup when clicking outside of it
+window.onclick = function(event) {
+    const popup = document.getElementById("popup");
+    if (event.target == popup) {
+        hidePopup();
+    }
+}
+
+// Example usage:
+// showPopup("Hello, this is a popup message!");
