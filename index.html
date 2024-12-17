@@ -5,11 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./scripts/javascript.js" defer></script>
+    <link rel="stylesheet" href="./stylesheets/styles.css">
 </head>
 <body>
-    <div id="container"></div>
+    <div id="container" class="flex-box-column">
+        <div id="header-box">
+            <button id="start-game-button"><h2>Click here to start the game</h2></button>
+        </div>
+        <div id="game-play-here" class="flex-box-column">
+            <h3 id="log-text">Lets Play rock paper scissors!!</h3>
+            <div id="outer-game-box">
+                <div id="computer-box" class="flex-box-column">
+                    <div class="title flex-box-column">
+                        <h3 class="flex-box-row">Computer: <p id="score-computer">score</p></h3>
+                        
+                    </div>
+                    <div id="computer-choice-box">
+                        <h1 id="computer-choice">choice</h1>
+                    </div>
+                </div>
+                <h2>VS</h2>
+                <div id="player-box" class="flex-box-column">
+                    <div class="title flex-box-column">
+                        <h3 class="flex-box-row">Player: <p id="score-player">score</p></h3>
+                    </div>
+                    <div id="player-choice-box">
+                        <h1 id="player-choice">choice</h1>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex-box-row button-box">
+                <button class="rps-button" value="rock">Rock</button>
+                <button class="rps-button" value="paper">Paper</button>
+                <button class="rps-button" value="scissors">Scissors</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="x-button">
+                <p class="x-button-txt">Game over!</p>
+                <span class="close">&times;</span>
+                
+            </div>
+            <p id="popup-message">This is a popup message.</p>
+        </div>
+    </div>
     <!-- the HTML file -->
-<button id="btn">Click Me</button>
 
     
 </body>
