@@ -37,10 +37,6 @@ function getComputerChoice() {
 
 function getHumanChoice() {
 
-    // const gameRules = ['rock', 'paper', 'scissors'];
-    // let choiceMade = false;
-    // let loop = 0;
-
     return new Promise((resolve) => {
         buttons.forEach((button) => {
             button.addEventListener("click", () => {
@@ -49,35 +45,6 @@ function getHumanChoice() {
             }, { once: true });
         });
     });
-
-    // while (!choiceMade || loop > 100) {
-    //     try {
-    //         // let choice = prompt("to exit type exit: \nLets play! choose 1 option: rock, paper, scissors: ").toLowerCase();
-    
-    //         if (choice === 'exit') {
-    //             gameTerminated = true;
-    //         }
-    //         else if (!gameRules.includes(choice)) {
-    //             throw new Error("invalid option. Pick rock, paper, or scissors")
-            
-    //         }
-    //         else {
-    //             console.log("play picked: " + choice);
-    //             return choice;
-    //         }
-    //         choiceMade = true
-    //         // this is here to protect from random endless loop as a backup.
-    //         loop++;
-            
-    //     } catch (error) {
-    //         console.error("An error has been thrown. : ", error)
-    //     }
-
-    // }
-    // if (loop >= 100) {
-    //     console.log("Mad lad you either messged up 100 times.. or you hit a loop")
-    //     gameTerminated = true;
-    // }
     
 }
 
@@ -176,13 +143,3 @@ function hidePopup() {
 // Close the popup when clicking on <span> (x)
 document.querySelector(".close").onclick = hidePopup;
 
-// Close the popup when clicking outside of it
-window.onclick = function(event) {
-    const popup = document.getElementById("popup");
-    if (event.target == popup) {
-        hidePopup();
-    }
-}
-
-// Example usage:
-// showPopup("Hello, this is a popup message!");
