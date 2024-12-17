@@ -3,6 +3,40 @@ let humanScore = 0;
 let computerScore = 0;
 let gameTerminated = false;
 
+const button = document.querySelector('#btn');
+button.onclick = () => runMe()
+function runMe() {
+
+    const container = document.querySelector('#container');
+    const paragraph = document.createElement('p');
+    const header3 = document.createElement('h3');
+    const blkDiv = document.createElement('div');
+    const header1 = document.createElement('h1');
+    const paragraph2 = document.createElement('p')
+    
+    blkDiv.style.border = 'solid 1px black';
+    blkDiv.style.backgroundColor = 'pink';
+    blkDiv.className = 'black-div';
+    
+    header1.textContent = "I'm in a div";
+    
+    header3.textContent = "I'm a blue h3!";
+    header3.style.color = 'blue';
+    
+    paragraph.textContent = "Hey I'm red!";
+    paragraph.style.color = 'red';
+    
+    paragraph2.textContent = "ME TOO!"
+    
+    container.appendChild(header3);
+    container.appendChild(paragraph);
+    container.appendChild(blkDiv);
+    const blackDiv = document.querySelector('.black-div');
+    blackDiv.appendChild(header1);
+    blackDiv.appendChild(paragraph2)
+}
+
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
     const options = {
