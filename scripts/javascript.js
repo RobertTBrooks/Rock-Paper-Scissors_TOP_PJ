@@ -3,8 +3,21 @@ let humanScore = 0;
 let computerScore = 0;
 let gameTerminated = false;
 
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    alert(button.id);
+  });
+});
+
 const button = document.querySelector('#btn');
-button.onclick = () => runMe()
+button.addEventListener('click', () => {
+    runMe()
+});
 function runMe() {
 
     const container = document.querySelector('#container');
@@ -18,7 +31,7 @@ function runMe() {
     blkDiv.style.backgroundColor = 'pink';
     blkDiv.className = 'black-div';
     
-    header1.textContent = "I'm in a div";
+    header1.textContent = "Lets play! choose 1 option: rock, paper, scissors";
     
     header3.textContent = "I'm a blue h3!";
     header3.style.color = 'blue';
@@ -47,14 +60,14 @@ function getComputerChoice() {
     return options[choice];
 }
 
-function getHumanChoice() {
+function getHumanChoice(choice) {
     const gameRules = ['rock', 'paper', 'scissors'];
     let choiceMade = false;
     let loop = 0;
 
     while (!choiceMade || loop > 100) {
         try {
-            let choice = prompt("to exit type exit: \nLets play! choose 1 option: rock, paper, scissors: ").toLowerCase();
+            // let choice = prompt("to exit type exit: \nLets play! choose 1 option: rock, paper, scissors: ").toLowerCase();
     
             if (choice === 'exit') {
                 gameTerminated = true;
